@@ -8,6 +8,7 @@ class TestBookingUI:
         booking = BookingPage(page)
         booking.navigate()
         assert "Restful" in page.title(), "Page title should contain Restful Booker"
+        # This test passses✅
 
     def test_bookings_are_displayed(self, page):
         booking = BookingPage(page)
