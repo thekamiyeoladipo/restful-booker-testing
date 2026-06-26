@@ -11,48 +11,44 @@ class DemoQAPage:
         self.book_rows = page.locator(".rt-td a")
 
     def navigate_to_bookstore(self):
-        self.page.goto("https://demoqa.com/books")
-        self.page.wait_for_load_state("domcontentloaded")
-        self.page.wait_for_timeout(2000)
+        self.page.goto("https://demoqa.com/books", wait_until="commit")
+        self.page.wait_for_timeout(3000)
 
     def navigate_to_login(self):
-        self.page.goto("https://demoqa.com/login")
-        self.page.wait_for_load_state("domcontentloaded")
-        self.page.wait_for_timeout(1000)
+        self.page.goto("https://demoqa.com/login", wait_until="commit")
+        self.page.wait_for_timeout(2000)
 
     def navigate_to_profile(self):
-        self.page.goto("https://demoqa.com/profile")
-        self.page.wait_for_load_state("domcontentloaded")
-        self.page.wait_for_timeout(2000)
+        self.page.goto("https://demoqa.com/profile", wait_until="commit")
+        self.page.wait_for_timeout(3000)
 
     def login(self, username, password):
         self.username_input.fill(username)
         self.password_input.fill(password)
         self.login_submit.click()
-        self.page.wait_for_load_state("domcontentloaded")
-        self.page.wait_for_timeout(2000)
+        self.page.wait_for_timeout(3000)
 
     def is_logged_in(self):
         try:
-            self.logged_in_username.wait_for(state="visible", timeout=8000)
+            self.logged_in_username.wait_for(state="visible", timeout=10000)
             return True
         except:
             return False
 
     def search_book(self, title):
         self.search_input.fill(title)
-        self.page.wait_for_timeout(1500)
+        self.page.wait_for_timeout(2000)
 
     def get_visible_book_count(self):
         try:
-            self.book_rows.first.wait_for(state="visible", timeout=8000)
+            self.book_rows.first.wait_for(state="visible", timeout=10000)
         except:
             pass
         return self.book_rows.count()
 
     def is_book_visible(self, title):
         try:
-            self.book_rows.first.wait_for(state="visible", timeout=8000)
+            self.book_rows.first.wait_for(state="visible", timeout=10000)
         except:
             return False
         count = self.book_rows.count()
