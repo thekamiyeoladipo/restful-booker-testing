@@ -31,3 +31,7 @@ def page():
         yield page
         context.close()
         browser.close()
+
+@pytest.fixture(scope="session")
+def demoqa_user_id():
+    return os.getenv("DEMOQA_USER_ID")
