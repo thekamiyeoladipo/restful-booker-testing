@@ -24,7 +24,7 @@ def demoqa_password():
 @pytest.fixture(scope="function")
 def page():
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)
+        browser = p.chromium.launch(headless=True)
         context = browser.new_context()
         context.set_default_timeout(15000)
         page = context.new_page()
