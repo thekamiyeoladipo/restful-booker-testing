@@ -25,7 +25,8 @@ class TestDemoQAUI:
     def test_books_are_displayed(self, page):
         demoqa = DemoQAPage(page)
         demoqa.navigate_to_bookstore()
-        assert demoqa.get_visible_book_count() > 0, "Bookstore should display books"
+        assert demoqa.is_book_visible("Git Pocket Guide"), \
+            "Bookstore should display books including Git Pocket Guide"
 
     def test_search_filters_books(self, page):
         demoqa = DemoQAPage(page)
