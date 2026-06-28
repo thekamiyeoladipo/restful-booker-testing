@@ -37,6 +37,9 @@ class TestDemoQAAPI:
         books_response = get_all_books()
         isbn = books_response.json()["books"][0]["isbn"]
 
+        # Cleanup first in case book already exists from a previous run
+        delete_book_from_user(USER_ID, isbn, token)
+
         # Add book to user
         add_response = add_book_to_user(USER_ID, isbn, token)
         assert add_response.status_code in [200, 201], \
