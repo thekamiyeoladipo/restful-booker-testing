@@ -26,9 +26,9 @@ def page():
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         context = browser.new_context()
-        context.set_default_timeout(60000)  # Increase to 60 seconds
+        context.set_default_timeout(60000)  
         page = context.new_page()
-        page.set_default_navigation_timeout(60000)  # Navigation timeout too
+        page.set_default_navigation_timeout(60000)  
         yield page
         context.close()
         browser.close()
